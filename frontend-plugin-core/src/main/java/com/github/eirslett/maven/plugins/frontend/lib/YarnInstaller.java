@@ -137,7 +137,7 @@ public class YarnInstaller {
     }
 
     private void setFilePermissions(File installDirectory) {
-        File file = new File(installDirectory.getPath() + "/dist/bin/yarn");
+        File file = new File(installDirectory.getPath() + "/" + YARN_ROOT_DIRECTORY + "/bin/yarn");
         
         logger.info("Updating file permissions: {}", file);
         if(file.exists() {
