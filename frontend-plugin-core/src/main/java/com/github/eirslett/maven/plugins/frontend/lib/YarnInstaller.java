@@ -126,6 +126,8 @@ public class YarnInstaller {
 
             ensureCorrectYarnRootDirectory(installDirectory, yarnVersion);
 
+            setFilePermissions(installDirectory);
+            
             logger.info("Installed Yarn locally.");
         } catch (DownloadException e) {
             throw new InstallationException("Could not download Yarn", e);
@@ -134,6 +136,18 @@ public class YarnInstaller {
         }
     }
 
+    private void setFilePermissions(File installDirectory) {
+        File file = new File(installDirectory.getPath() + "/dist/bin/yarn");
+        
+        logger.info("Updating file permissions: {}", file);
+        if(file.exists() {
+            logger.info("file exist!");
+            file.setExecutable(true, false);
+            file.setReadable(true, false);
+            file.setWritable(true, false);
+        }
+    }
+    
     private File getInstallDirectory() {
         File installDirectory = new File(config.getInstallDirectory(), INSTALL_PATH);
         if (!installDirectory.exists()) {
